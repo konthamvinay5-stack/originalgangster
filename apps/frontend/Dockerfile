@@ -1,32 +1,28 @@
-# syntax=docker/dockerfile:1
-
-# ----------- Build Stage -----------
+# ---------- Build Stage ----------
 ARG NODE_VERSION=22.13.1
 FROM node:${NODE_VERSION}-bullseye-slim AS build
 WORKDIR /app
 
-# Install dependencies using npm ci for deterministic builds
-COPY --link package.json ./
-# No package-lock.json present, so fallback to npm install
-RUN --mount=type=cache,target=/root/.npm npm install
+# Install dependencies
+COPY package.json package-lock.json* ./
+RUN npm install
 
-# Copy all source code (excluding files in .dockerignore)
-COPY --link . .
+# Copy app source
+COPY . .
 
 # Build the Vite app
 RUN npm run build
 
-# ----------- Production Stage (Nginx) -----------
-FROM nginx:1.25.2-alpine AS final
+# ---------- Production Stage ----------
+FROM nginx:1.25.2-alpine
 WORKDIR /usr/share/nginx/html
 
-# Copy built frontend from build stage
+# Copy built files from build stage
 COPY --from=build /app/dist .
 
-# Use a non-root user for security
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-USER appuser
-
+# custom nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf 
 EXPOSE 80
 
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
