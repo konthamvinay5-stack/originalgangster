@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-muted text-secondary antialiased;
+}
+
+a {
+  @apply text-secondary hover:text-primary transition-colors;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold;
+}

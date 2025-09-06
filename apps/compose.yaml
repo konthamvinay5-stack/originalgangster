@@ -1,0 +1,31 @@
+services:
+  js-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    working_dir: /app
+    ports:
+      - "4000:4000"  # Exposed by backend Dockerfile
+    restart: unless-stopped
+    init: true
+    # env_file: ./backend/.env  # Uncomment if .env file exists
+    networks:
+      - appnet
+
+  js-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    working_dir: /app
+    ports:
+      - "80:80"  # Exposed by frontend Dockerfile (nginx)
+    restart: unless-stopped
+    init: true
+    networks:
+      - appnet
+    depends_on:
+      - js-backend  # Ensure backend is up before frontend (if frontend needs API)
+
+networks:
+  appnet:
+    driver: bridge

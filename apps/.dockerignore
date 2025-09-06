@@ -1,0 +1,71 @@
+# Node.js dependencies
+node_modules/
+
+# Build outputs
+build/
+dist/
+out/
+tmp/
+temp/
+*.tmp
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Version control
+.git/
+.gitignore
+.svn/
+.hg/
+
+# Environment and secrets
+.env*
+*.env
+*.pem
+*.key
+*.crt
+config.local.*
+*.local.yml
+.local/
+
+# Development artifacts
+npm-debug.log
+yarn-debug.log
+debug/
+*.log
+
+# Test files and folders
+test/
+tests/
+
+# Documentation
+README*
+docs/
+*.md
+
+# Docker files (do not include Dockerfile in context)
+Dockerfile*
+docker-compose*
+
+# Project-specific
+public/images/
+
+# Exclude example env files (keep only for reference, not in build)
+.env.example
+
+# Data files (if not needed in build)
+data/
+
+# Exclude empty directories
+**/.empty
+
+# Exclude files with no extension (if not needed)
+*.
+
+# Exclude any other local config
+*.example
+
+# Note: Do not exclude *.lock files, .mvnw, .gradlew, .mvn, .gradle as per instructions.

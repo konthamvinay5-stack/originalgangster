@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "Killing It Up Brutal Hoodie",
+    "slug": "Killing It Up Brutal Hoodie",
+    "price": 799,
+    "rating": 4.5,
+    "image": "https://theogwear.com/cdn/shop/files/Black_og.jpg?v=1756286257&width=1600",
+    "description": "Unapologetic. Fearless. Statement-driven",
+    "model3d": "https://modelviewer.dev/shared-assets/models/Hat.glb",
+    "model3d_ios": ""
+  },
+
+  {
+    "id": 2,
+    "name": "OG Signature Hoodie",
+    "slug": "OG Signature Hoodie",
+    "price": 1499,
+    "rating": 4.7,
+    "image": "https://theogwear.com/cdn/shop/files/7.png?v=1755866763&width=1600",
+    "description": "The OG Signature Hoodie takes a timeless silhouette and elevates it into a statement essential."
+  },
+  {
+    "id": 3,
+    "name": "OG Signature Hoodie",
+    "slug": "og-signature-hoodie",
+    "price": 1999,
+    "rating": 4.6,
+    "image": "https://theogwear.com/cdn/shop/files/1_00af79b6-34d3-472c-9657-e1d47c212a93.png?v=1755866554&width=1600",
+    "description": "A premium charcoal black hoodie featuring a front pocket patch with a metallic silver OG emblem and back neck detail with metallic silver Chinese characters 诺力火."
+  },
+  {
+    "id": 4,
+    "name": "OG Signature T-Shirt",
+    "slug": "OG Signature T-Shirt",
+    "price": 1499,
+    "rating": 4.8,
+    "image": "https://theogwear.com/cdn/shop/files/13.png?v=1755866489&width=1600",
+    "description": "A premium charcoal black tee featuring a front pocket patch with a metallic silver OG emblem and back neck detail with metallic silver Chinese characters 诺力火."
+  }
+]
