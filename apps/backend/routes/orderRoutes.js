@@ -3,10 +3,10 @@ const { createOrder, getOrders } = require("../controllers/orderController");
 
 const router = express.Router();
 
-// POST /api/checkout - create a new order
+// POST /api/checkout
 router.post("/checkout", createOrder);
 
-// GET /api/orders - fetch all orders (admin)
+// GET /api/orders
 router.get("/orders", getOrders);
 
 module.exports = router;
