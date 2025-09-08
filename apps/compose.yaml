@@ -46,7 +46,7 @@ services:
       - PORT=4000
       - MONGO_URI=mongodb://mongo:27017/errorfit   # ✅ Mongo inside Docker network
       - EMAIL_USER=konthamvinay4@gmail.com
-      - EMAIL_PASS=hlmfqkgtmxgpowf
+      - EMAIL_PASS=wehakojeoftfqoky
       - NOTIFY_TO=konthamvinay5@gmail.com
     networks:
       - appnet
