@@ -43,7 +43,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 const Order = require("./models/order");
-const router = require("./routes/orderRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const productsRouter = require("./routes/products");
 const paymentsRouter = require("./routes/payments");
@@ -82,7 +82,6 @@ const transporter = nodemailer.createTransport({
 app.use("/api/products", productsRouter);
 app.use("/api/payments", paymentsRouter);
 app.use("/api", orderRoutes);
-
 // ✅ Checkout API (saves + notifies)
 app.post("/api/checkout", async (req, res) => {
   try {
