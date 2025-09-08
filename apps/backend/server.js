@@ -43,7 +43,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 const Order = require("./models/order");
-const orderRoutes = require ("./routes/orderRoutes.js");
+const orderRoutes = require ("./routes/orderRoutes");
 
 const productsRouter = require("./routes/products");
 const paymentsRouter = require("./routes/payments");
