@@ -39,11 +39,11 @@ services:
       dockerfile: Dockerfile
     working_dir: /app
     ports:
-      - "5000:5000"
+      - "4000:4000"
     restart: unless-stopped
     init: true
     environment:
-      - PORT=5000
+      - PORT=4000
       - MONGO_URI=mongodb://mongo:27017/errorfit   # ✅ Mongo inside Docker network
       - EMAIL_USER=konthamvinay4@gmail.com
       - EMAIL_PASS=hlmfqkgtmxgpowf
