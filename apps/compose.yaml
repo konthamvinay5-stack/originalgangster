@@ -1,3 +1,37 @@
+# services:
+#   js-backend:
+#     build:
+#       context: ./backend
+#       dockerfile: Dockerfile
+#     working_dir: /app
+#     ports:
+#       - "5000:5000"  # Exposed by backend Dockerfile
+#     restart: unless-stopped
+#     init: true
+#     # env_file: ./backend/.env  # Uncomment if .env file exists
+#     networks:
+#       - appnet
+
+#   js-frontend:
+#     build:
+#       context: ./frontend
+#       dockerfile: Dockerfile
+#     working_dir: /app
+#     ports:
+#       - "80:80"  # Exposed by frontend Dockerfile (nginx)
+#     restart: unless-stopped
+#     init: true
+#     networks:
+#       - appnet
+#     depends_on:
+#       - js-backend  # Ensure backend is up before frontend (if frontend needs API)
+
+# networks:
+#   appnet:
+#     driver: bridge
+
+version: "3.9"
+
 services:
   js-backend:
     build:
@@ -5,12 +39,19 @@ services:
       dockerfile: Dockerfile
     working_dir: /app
     ports:
-      - "5000:5000"  # Exposed by backend Dockerfile
+      - "5000:5000"
     restart: unless-stopped
     init: true
-    # env_file: ./backend/.env  # Uncomment if .env file exists
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb://mongo:27017/errorfit   # ✅ Mongo inside Docker network
+      - EMAIL_USER=konthamvinay4@gmail.com
+      - EMAIL_PASS=hlmfqkgtmxgpowf
+      - NOTIFY_TO=konthamvinay5@gmail.com
     networks:
       - appnet
+    depends_on:
+      - mongo   # ✅ backend waits for MongoDB
 
   js-frontend:
     build:
@@ -18,14 +59,28 @@ services:
       dockerfile: Dockerfile
     working_dir: /app
     ports:
-      - "80:80"  # Exposed by frontend Dockerfile (nginx)
+      - "80:80"
     restart: unless-stopped
     init: true
     networks:
       - appnet
     depends_on:
-      - js-backend  # Ensure backend is up before frontend (if frontend needs API)
+      - js-backend
+
+  mongo:
+    image: mongo:6.0
+    container_name: og-mongo
+    restart: always
+    ports:
+      - "27017:27017"  # only needed if you want local access from host
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - appnet
 
 networks:
   appnet:
     driver: bridge
+
+volumes:
+  mongo_data:
