@@ -8,7 +8,7 @@ const sampleProducts = [
     name: "OG Tee",
     price: "₹999",
     image:
-      "https://theogwear.com/cdn/shop/files/13.png?v=1755866489&width=1600",
+      "https://drive.google.com/file/d/1Ue7pDr93Zuyg224B73ZSvTEoisugidJ4/view?usp=sharing",
   },
   {
     id: 2,
